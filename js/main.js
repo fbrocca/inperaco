@@ -76,7 +76,6 @@
 
     var target = window.scrollY;
     var current = window.scrollY;
-    var settingScroll = false;
     var velocity = 0;
 
     function maxScroll() {
@@ -91,9 +90,11 @@
       target = clamp(target + delta, 0, maxScroll());
     }, { passive: false });
 
-    // resync when scrolling happens through other means (keyboard, scrollbar, hash)
+    // resync only when something else moved the page (keyboard, scrollbar, hash);
+    // our own scrollTo lands within rounding distance of `current`, so it won't trip this
     addEventListener("scroll", function () {
-      if (!settingScroll) { target = current = window.scrollY; }
+      var y = window.scrollY;
+      if (Math.abs(y - current) > 1.5) { target = current = y; }
     }, { passive: true });
 
     // animate anchor clicks ourselves
@@ -111,13 +112,11 @@
 
     (function loop() {
       var prev = current;
-      current = lerp(current, target, 0.095);
+      current = lerp(current, target, 0.18);
       if (Math.abs(current - target) < 0.4) current = target;
       velocity = current - prev;
       if (Math.round(current) !== Math.round(window.scrollY)) {
-        settingScroll = true;
         window.scrollTo(0, Math.round(current));
-        settingScroll = false;
       }
       window.__scrollVelocity = velocity;
       requestAnimationFrame(loop);
@@ -246,7 +245,7 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    }, { threshold: 0.08, rootMargin: "0px 0px 0px 0px" });
     els.forEach(function (el) { obs.observe(el); });
   }
 

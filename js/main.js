@@ -69,57 +69,23 @@
     });
   }
 
-  /* ---------------- smooth (inertial) scrolling ---------------- */
+  /* ---------------- scroll velocity tracker (marquee boost) ---------------- */
 
-  function initSmoothScroll() {
-    if (prefersReducedMotion || !hasFinePointer) return;
-
-    var target = window.scrollY;
-    var current = window.scrollY;
-    var velocity = 0;
-
-    function maxScroll() {
-      return document.documentElement.scrollHeight - innerHeight;
-    }
-
-    addEventListener("wheel", function (e) {
-      if (e.ctrlKey) return; // pinch-zoom
-      e.preventDefault();
-      var delta = e.deltaY;
-      if (e.deltaMode === 1) delta *= 16; // lines -> px
-      target = clamp(target + delta, 0, maxScroll());
-    }, { passive: false });
-
-    // resync only when something else moved the page (keyboard, scrollbar, hash);
-    // our own scrollTo lands within rounding distance of `current`, so it won't trip this
+  function initScrollVelocity() {
+    var lastY = window.scrollY;
+    var lastT = performance.now();
+    window.__scrollVelocity = 0;
     addEventListener("scroll", function () {
-      var y = window.scrollY;
-      if (Math.abs(y - current) > 1.5) { target = current = y; }
+      var now = performance.now();
+      var dt = Math.max(now - lastT, 1);
+      window.__scrollVelocity = ((window.scrollY - lastY) / dt) * 16.7; // px per frame
+      lastY = window.scrollY;
+      lastT = now;
     }, { passive: true });
-
-    // animate anchor clicks ourselves
-    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-      a.addEventListener("click", function (e) {
-        var id = a.getAttribute("href");
-        if (id.length < 2) return;
-        var el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        target = clamp(el.getBoundingClientRect().top + window.scrollY - 60, 0, maxScroll());
-        history.replaceState(null, "", id);
-      });
-    });
-
-    (function loop() {
-      var prev = current;
-      current = lerp(current, target, 0.18);
-      if (Math.abs(current - target) < 0.4) current = target;
-      velocity = current - prev;
-      if (Math.round(current) !== Math.round(window.scrollY)) {
-        window.scrollTo(0, Math.round(current));
-      }
-      window.__scrollVelocity = velocity;
-      requestAnimationFrame(loop);
+    // decay so the marquee settles after scrolling stops
+    (function decay() {
+      window.__scrollVelocity *= 0.9;
+      requestAnimationFrame(decay);
     })();
   }
 
@@ -579,7 +545,7 @@
     initManifesto();
     initPreloader();
     initCursor();
-    initSmoothScroll();
+    initScrollVelocity();
     initNav();
     initMenu();
     initScramble();

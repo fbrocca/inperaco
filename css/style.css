@@ -21,11 +21,10 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* NOTE: no global scroll-behavior:smooth — it would turn the JS inertial-scroll
-   engine's per-frame scrollTo calls into restarted native animations (page barely
-   moves, then lags). Touch devices don't run that engine, so they get it here. */
-@media (pointer: coarse) {
-  html { scroll-behavior: smooth; }
+/* wheel/touch scrolling is fully native; smooth applies only to anchor jumps */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 8px);
 }
 
 body {

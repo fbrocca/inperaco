@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inperaco — Strategy, Capital &amp; AI for Supply Chain</title>
+  <meta name="description" content="Inperaco is a consulting firm at the intersection of logistics, capital, and AI. Product strategy, advisory, M&A and investment analysis — plus engineers who ship AI agents into production.">
+  <meta property="og:title" content="Inperaco — Strategy, Capital & AI for Supply Chain">
+  <meta property="og:description" content="We turn supply-chain complexity into margin — and build the AI agents that do the work.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======================= PRELOADER ======================= -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <div class="preloader__logo">
+        <span class="preloader__letter">I</span><span class="preloader__letter">N</span><span class="preloader__letter">P</span><span class="preloader__letter">E</span><span class="preloader__letter">R</span><span class="preloader__letter">A</span><span class="preloader__letter">C</span><span class="preloader__letter">O</span>
+      </div>
+      <div class="preloader__bar"><span class="preloader__bar-fill" id="preloaderBar"></span></div>
+      <div class="preloader__count" id="preloaderCount">0</div>
+    </div>
+  </div>
+
+  <!-- ======================= CURSOR ======================= -->
+  <div class="cursor" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ======================= GRAIN + AURORA ======================= -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true">
+    <div class="aurora__blob aurora__blob--a"></div>
+    <div class="aurora__blob aurora__blob--b"></div>
+    <div class="aurora__blob aurora__blob--c"></div>
+  </div>
+
+  <!-- ======================= NAV ======================= -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top" data-magnetic>
+      <svg class="nav__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M6 26 L6 12 L16 4 L26 12 L26 26" stroke="url(#markGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16" cy="17" r="3.5" fill="url(#markGrad)"/>
+        <defs>
+          <linearGradient id="markGrad" x1="6" y1="4" x2="26" y2="26">
+            <stop offset="0" stop-color="#53e0c4"/><stop offset="1" stop-color="#7c6cff"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="nav__wordmark">INPERACO</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#services" data-scramble>Services</a>
+      <a href="#focus" data-scramble>Focus</a>
+      <a href="#engagement" data-scramble>Engagement</a>
+      <a href="#about" data-scramble>Approach</a>
+    </nav>
+    <a href="#contact" class="btn btn--small nav__cta" data-magnetic><span>Let's talk</span></a>
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="menu" id="mobileMenu" aria-hidden="true">
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="#services" style="--i:0">Services</a>
+      <a href="#focus" style="--i:1">Focus</a>
+      <a href="#engagement" style="--i:2">Engagement</a>
+      <a href="#about" style="--i:3">Approach</a>
+      <a href="#contact" style="--i:4">Contact</a>
+    </nav>
+    <div class="menu__foot">fabio@inperaco.com</div>
+  </div>
+
+  <main id="top">
+
+    <!-- ======================= HERO ======================= -->
+    <section class="hero">
+      <canvas class="hero__canvas" id="networkCanvas" aria-hidden="true"></canvas>
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="hero__content container">
+        <p class="eyebrow hero__eyebrow"><span class="eyebrow__dot"></span>Strategy · Capital · AI — for supply chain</p>
+        <h1 class="hero__title" id="heroTitle">
+          <span class="hero__line"><span class="w">Strategy</span> <span class="w">that</span></span>
+          <span class="hero__line"><span class="w hero__accent">actually&nbsp;ships.</span></span>
+        </h1>
+        <p class="hero__sub" data-reveal>
+          Inperaco is a consulting firm at the intersection of logistics, capital, and AI.
+          We help operators, investors, and builders turn supply-chain complexity into
+          margin — and we build the AI agents that do the work.
+        </p>
+        <div class="hero__ctas" data-reveal data-reveal-delay="120">
+          <a href="#contact" class="btn btn--primary" data-magnetic><span>Start a conversation</span></a>
+          <a href="#services" class="btn btn--ghost" data-magnetic><span>Explore services</span></a>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-label">Scroll</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ======================= MARQUEE ======================= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marqueeTrack">
+        <div class="marquee__group">
+          <span>Product Strategy</span><i>✦</i>
+          <span>M&amp;A Advisory</span><i>✦</i>
+          <span>Investment Analysis</span><i>✦</i>
+          <span>AI Agents</span><i>✦</i>
+          <span>Freight</span><i>✦</i>
+          <span>Procurement</span><i>✦</i>
+          <span>Fulfillment</span><i>✦</i>
+          <span>Last&nbsp;Mile</span><i>✦</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================= MANIFESTO ======================= -->
+    <section class="manifesto section" id="why">
+      <div class="container container--narrow">
+        <p class="eyebrow" data-reveal><span class="eyebrow__dot"></span>Why Inperaco</p>
+        <p class="manifesto__text" id="manifestoText">
+          Supply chains generate data faster than organizations generate decisions.
+          Most firms sell you slides about that gap. We close it — with sharper strategy,
+          disciplined capital, and AI agents running in production.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================= SERVICES ======================= -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow" data-reveal><span class="eyebrow__dot"></span>What we do</p>
+          <h2 class="section__title" data-split>Four disciplines.<br>One operating system.</h2>
+        </div>
+        <div class="services__grid">
+          <article class="card service" data-tilt data-reveal>
+            <div class="card__glare" aria-hidden="true"></div>
+            <span class="service__num">01</span>
+            <h3 class="service__title">Product Strategy</h3>
+            <p class="service__desc">From roadmap to P&amp;L. We sharpen positioning, pricing, and go-to-market for logistics products — and kill the features that don't move the number.</p>
+            <ul class="service__list">
+              <li>Product &amp; portfolio strategy</li>
+              <li>Pricing &amp; packaging</li>
+              <li>Go-to-market for supply-chain tech</li>
+              <li>Product-market-fit diagnostics</li>
+            </ul>
+          </article>
+          <article class="card service" data-tilt data-reveal data-reveal-delay="90">
+            <div class="card__glare" aria-hidden="true"></div>
+            <span class="service__num">02</span>
+            <h3 class="service__title">Strategic Advisory</h3>
+            <p class="service__desc">Board-level counsel for leaders navigating shifts in trade, technology, and demand. Straight answers, an operating cadence, and skin in the game.</p>
+            <ul class="service__list">
+              <li>Corporate &amp; growth strategy</li>
+              <li>Market entry &amp; expansion</li>
+              <li>Operating model &amp; org design</li>
+              <li>Executive &amp; board advisory</li>
+            </ul>
+          </article>
+          <article class="card service" data-tilt data-reveal data-reveal-delay="180">
+            <div class="card__glare" aria-hidden="true"></div>
+            <span class="service__num">03</span>
+            <h3 class="service__title">M&amp;A &amp; Investment Analysis</h3>
+            <p class="service__desc">De-risk the deal. Commercial due diligence, target screening, and investment theses grounded in how logistics businesses actually make money.</p>
+            <ul class="service__list">
+              <li>Commercial due diligence</li>
+              <li>Target screening &amp; theses</li>
+              <li>Valuation &amp; deal support</li>
+              <li>Post-merger integration</li>
+            </ul>
+          </article>
+          <article class="card service" data-tilt data-reveal data-reveal-delay="270">
+            <div class="card__glare" aria-hidden="true"></div>
+            <span class="service__num">04</span>
+            <h3 class="service__title">AI Agent Engineering</h3>
+            <p class="service__desc">We don't just recommend AI — our engineers build it. Agents that quote, track, reconcile, and procure, wired into your TMS, WMS, and ERP.</p>
+            <ul class="service__list">
+              <li>Agent scoping &amp; ROI cases</li>
+              <li>Build &amp; systems integration</li>
+              <li>Deployment into live workflows</li>
+              <li>Monitoring, evals &amp; handover</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= FOCUS / DOMAINS ======================= -->
+    <section class="section section--tight" id="focus">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow" data-reveal><span class="eyebrow__dot"></span>Where we play</p>
+          <h2 class="section__title" data-split>Deep in logistics.<br>On purpose.</h2>
+        </div>
+        <ul class="domains">
+          <li class="domain" data-reveal>
+            <span class="domain__idx">A</span>
+            <span class="domain__name">Freight &amp; Transportation</span>
+            <span class="domain__tags">FTL · LTL · Ocean · Air · Rail</span>
+          </li>
+          <li class="domain" data-reveal data-reveal-delay="60">
+            <span class="domain__idx">B</span>
+            <span class="domain__name">Warehousing &amp; Fulfillment</span>
+            <span class="domain__tags">3PL · Robotics · WMS</span>
+          </li>
+          <li class="domain" data-reveal data-reveal-delay="120">
+            <span class="domain__idx">C</span>
+            <span class="domain__name">Procurement &amp; Spend</span>
+            <span class="domain__tags">Sourcing · Audit · Spend intelligence</span>
+          </li>
+          <li class="domain" data-reveal data-reveal-delay="180">
+            <span class="domain__idx">D</span>
+            <span class="domain__name">Last-Mile &amp; Delivery</span>
+            <span class="domain__tags">Networks · Density · Unit economics</span>
+          </li>
+          <li class="domain" data-reveal data-reveal-delay="240">
+            <span class="domain__idx">E</span>
+            <span class="domain__name">Supply-Chain Software &amp; AI</span>
+            <span class="domain__tags">TMS · Visibility · Agentic platforms</span>
+          </li>
+          <li class="domain" data-reveal data-reveal-delay="300">
+            <span class="domain__idx">F</span>
+            <span class="domain__name">Trade &amp; Customs</span>
+            <span class="domain__tags">Compliance · Tariffs · Cross-border</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ======================= ENGAGEMENT ======================= -->
+    <section class="section" id="engagement">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow" data-reveal><span class="eyebrow__dot"></span>Engagement models</p>
+          <h2 class="section__title" data-split>Work with us<br>the way it works for you.</h2>
+        </div>
+        <div class="stack" id="engagementStack">
+          <article class="stack__card card">
+            <div class="stack__meta">
+              <span class="stack__num">01</span>
+              <span class="stack__dur">Typical: 2–8 weeks</span>
+            </div>
+            <h3 class="stack__title">Project-Based</h3>
+            <p class="stack__desc">
+              For initiatives with clear goals, timelines, and budgets. We define a specific
+              roadmap together and deliver against it — diligence on a target, an M&amp;A plan,
+              a product or market strategy — within a well-structured framework built for
+              timely, decision-ready results.
+            </p>
+            <ul class="stack__points">
+              <li>Fixed scope &amp; deliverables</li>
+              <li>Investment due diligence</li>
+              <li>Strategy sprints</li>
+            </ul>
+          </article>
+          <article class="stack__card card">
+            <div class="stack__meta">
+              <span class="stack__num">02</span>
+              <span class="stack__dur">Typical: 6–12 months</span>
+            </div>
+            <h3 class="stack__title">Retainer</h3>
+            <p class="stack__desc">
+              When the complexity demands ongoing attention. We become a seamless extension
+              of your team — continuous strategic guidance, problem-solving, and adaptation
+              as the business evolves. Built for transformations, integrations, and
+              navigating intricate global challenges.
+            </p>
+            <ul class="stack__points">
+              <li>Ongoing partnership</li>
+              <li>Monthly operating cadence</li>
+              <li>Priority access</li>
+            </ul>
+          </article>
+          <article class="stack__card card">
+            <div class="stack__meta">
+              <span class="stack__num">03</span>
+              <span class="stack__dur">Ongoing</span>
+            </div>
+            <h3 class="stack__title">Fractional C-Level &amp; Board</h3>
+            <p class="stack__desc">
+              Trusted, high-level expertise on a part-time executive basis — or a permanent
+              seat at the board. For organizations navigating strategic shifts and digital
+              transformation that need senior operating leadership without the full-time
+              overhead.
+            </p>
+            <ul class="stack__points">
+              <li>Fractional CPO / CSO</li>
+              <li>Board membership</li>
+              <li>Executive sparring</li>
+            </ul>
+          </article>
+          <article class="stack__card card">
+            <div class="stack__meta">
+              <span class="stack__num">04</span>
+              <span class="stack__dur">Typical: 4–12 weeks</span>
+            </div>
+            <h3 class="stack__title">AI Agent Build</h3>
+            <p class="stack__desc">
+              An engineering engagement, not a slide deck. We scope the highest-ROI workflow,
+              prototype fast, then deploy production AI agents into your systems — with
+              monitoring, evals, and a clean handover, or managed iteration if you'd rather
+              we keep the pager.
+            </p>
+            <ul class="stack__points">
+              <li>Scope → prototype → production</li>
+              <li>TMS / WMS / ERP integration</li>
+              <li>Handover or managed service</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= STATS ======================= -->
+    <section class="stats section--tight">
+      <div class="container stats__grid">
+        <div class="stat" data-reveal>
+          <span class="stat__value"><span data-counter="20">0</span>+</span>
+          <span class="stat__label">Years operating in supply chain</span>
+        </div>
+        <div class="stat" data-reveal data-reveal-delay="80">
+          <span class="stat__value"><span data-counter="40">0</span>+</span>
+          <span class="stat__label">Deals &amp; targets analyzed</span>
+        </div>
+        <div class="stat" data-reveal data-reveal-delay="160">
+          <span class="stat__value"><span data-counter="12">0</span></span>
+          <span class="stat__label">AI agents shipped to production</span>
+        </div>
+        <div class="stat" data-reveal data-reveal-delay="240">
+          <span class="stat__value"><span data-counter="3">0</span></span>
+          <span class="stat__label">Continents served</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= APPROACH ======================= -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow" data-reveal><span class="eyebrow__dot"></span>How we work</p>
+          <h2 class="section__title" data-split>Diagnose. Strategize.<br>Execute. Compound.</h2>
+        </div>
+        <div class="process">
+          <div class="process__step" data-reveal>
+            <span class="process__num">01</span>
+            <h3>Diagnose</h3>
+            <p>We start in your data and on your floor — not in a template. Two weeks in, you'll know where the margin is leaking and why.</p>
+          </div>
+          <div class="process__step" data-reveal data-reveal-delay="90">
+            <span class="process__num">02</span>
+            <h3>Strategize</h3>
+            <p>Options priced, trade-offs explicit, one recommendation. Strategy you can defend to a board and hand to an ops team.</p>
+          </div>
+          <div class="process__step" data-reveal data-reveal-delay="180">
+            <span class="process__num">03</span>
+            <h3>Execute</h3>
+            <p>We stay for the messy part — deal execution, integration, and agents deployed into live workflows by our own engineers.</p>
+          </div>
+          <div class="process__step" data-reveal data-reveal-delay="270">
+            <span class="process__num">04</span>
+            <h3>Compound</h3>
+            <p>Every engagement leaves a system behind: playbooks, models, and automation that keep earning after we're gone.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CONTACT ======================= -->
+    <section class="contact section" id="contact">
+      <div class="container contact__inner">
+        <p class="eyebrow" data-reveal><span class="eyebrow__dot"></span>Contact</p>
+        <h2 class="contact__title" data-split>Let's move.</h2>
+        <p class="contact__sub" data-reveal>
+          Tell us about your product, your deal, or the workflow you want automated.
+          We'll come back within two business days — with a point of view, not a brochure.
+        </p>
+        <a class="btn btn--primary btn--big" href="mailto:fabio@inperaco.com" data-magnetic data-reveal data-reveal-delay="120">
+          <span>fabio@inperaco.com</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="footer__wordmark">INPERACO</span>
+        <p class="footer__tag">Strategy, capital &amp; AI for supply chain.</p>
+      </div>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#services">Services</a>
+        <a href="#focus">Focus</a>
+        <a href="#engagement">Engagement</a>
+        <a href="#about">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer__meta">
+        <span>© <span id="year">2026</span> Inperaco. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
